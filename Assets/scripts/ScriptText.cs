@@ -25,7 +25,6 @@ public class ScriptText : MonoBehaviour
     /// Переменная хранит в себе зачение рекорда
     /// </summary>
     private string savetxtRecordScore = "Record";
-
     /// <summary>
     /// Количество очков
     /// </summary>
@@ -42,19 +41,28 @@ public class ScriptText : MonoBehaviour
     /// Флаг для опреледеления выйграл игрок или нет
     /// </summary>
     public bool indexwin =  false;
+
+
     private void Start()
     {
+
         InitializedScore();
         InitializedRecordScore();
+
     }
+
     /// <summary>
     /// При запуске программы обновляем значение поля "Количество очков"
     /// </summary>
     public void InitializedScore()
     {
+
         score = 0;
+
         UpdateScoreText();
+
     }
+
     /// <summary>
     /// Добавляем очки
     /// </summary>
@@ -63,9 +71,13 @@ public class ScriptText : MonoBehaviour
     {
         
         score += amount;
+
         UpdateScoreText();
         SaveRecordScore();
+
     }
+
+
     #region Обновление текстовой информации
     /// <summary>
     /// Обновляем поле "Количество очков"
@@ -73,51 +85,68 @@ public class ScriptText : MonoBehaviour
     private void UpdateScoreText()
     {
         
-        txtScore.text = $"Количество очков:\n{score.ToString()}";
+        txtScore.text = $"Количество очков:\n{score}";
         if (score == winscore)
         {
-            txtWinorBad("Вы выйграли!!!");
+            TxtWinorBad("Вы выйграли!!!");
             indexwin = false;
         }
+
     }
+
     /// <summary>
     /// Обновляем поле "Рекорд"
     /// </summary>
     private void UpdateRecordScoreText()
     {
-        txtRecordScore.text = $"Рекорд:\n{recscore.ToString()}";
+
+        txtRecordScore.text = $"Рекорд:\n{recscore}";
+
     }
     #endregion
+
+
     #region Считывание и запись рекорда
     /// <summary>
     /// При запуске программы обновляем значение поля "Количество очков"
     /// </summary>
     private void InitializedRecordScore()
     {
+
         recscore = PlayerPrefs.GetInt(savetxtRecordScore, 0) ;
+
         UpdateRecordScoreText();
+
     }
+
     /// <summary>
     /// Записываем новый рекорд
     /// </summary>
     private void SaveRecordScore()
     {
+
         if (score > recscore)
         {
-
             PlayerPrefs.SetInt(savetxtRecordScore, score);
+
             UpdateRecordScoreText();
         }
+
     }
     #endregion
+
+
     /// <summary>
     /// Выдаем информацию о том выйграл ли игрок или проиграл
     /// </summary>
     /// <param name="info"></param>
-    public void txtWinorBad(string info)
+    public void TxtWinorBad(string info)
     {
+
         if (txtWinorFalse.color != null)
+        {
             txtWinorFalse.color = Color.black;
+        }
 
         if (indexwin == false)
         {
@@ -127,6 +156,7 @@ public class ScriptText : MonoBehaviour
         {
             txtWinorFalse.text = info;
         }
+
     }
   
 }

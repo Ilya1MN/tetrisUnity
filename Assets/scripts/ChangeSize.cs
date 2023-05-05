@@ -14,6 +14,7 @@ public class ChangeSize : MonoBehaviour
     /// </summary>
     public Transform gamefield;
 
+
     private void Awake()
     {
         indexmode = PlayerPrefs.GetInt("modeSelections", 1); //Узнаем какой режим был выбран
@@ -25,6 +26,7 @@ public class ChangeSize : MonoBehaviour
     /// </summary>
     public void SizeScreen()
     {
+
         switch (indexmode)
         {
             case 1:

@@ -33,6 +33,8 @@ public class ScriptMainMenu : MonoBehaviour
     /// Сетка игрового поля
     /// </summary>
     public static Transform[,] grid;
+
+
     private void Awake()
     {
         
@@ -40,14 +42,15 @@ public class ScriptMainMenu : MonoBehaviour
         width = PlayerPrefs.GetInt("width1", 10);
         modeSelection.value = PlayerPrefs.GetInt("modeSelections", 1);
         sensitivity.value = PlayerPrefs.GetInt("SpeedSelection", 1);
-    }
 
+    }
 
     /// <summary>
     /// Метод для работы с раскрывающим списком
     /// </summary>
     public void Drops()
     {
+
         if (modeSelection.value == 0)
         {
             width = 10;
@@ -65,13 +68,16 @@ public class ScriptMainMenu : MonoBehaviour
         PlayerPrefs.SetInt("modeSelections", modeSelection.value + 1);
 
     }
+
     /// <summary>
     /// Метод для работы со слайдером
     /// </summary>
     public void SlideSpedSel()
     {
+
        txtspeed.text = $"Выберите скорость: {(int)sensitivity.value}";
        PlayerPrefs.SetInt("SpeedSelection", (int)sensitivity.value);
+
     }
 
     /// <summary>
@@ -79,8 +85,9 @@ public class ScriptMainMenu : MonoBehaviour
     /// </summary>
     public void ExitGame()
     {
-    
+  
         Application.Quit();
+
     }
 
    
